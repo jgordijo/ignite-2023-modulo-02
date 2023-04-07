@@ -1,11 +1,16 @@
-import fastify from 'fastify';
+import fastify from 'fastify'
+import { transactionRoutes } from './routes/transactions'
 
-const app = fastify();
+const app = fastify()
+
+app.register(transactionRoutes, {
+  prefix: 'transactions',
+})
 
 app
   .listen({
     port: 3333,
   })
   .then(() => {
-    console.log('HTTP Server Running!');
-  });
+    console.log('HTTP Server Running!')
+  })
